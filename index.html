@@ -56,6 +56,8 @@
 					
 						<li><a href="/archives">归档</a></li>
 					
+						<li><a href="/favourite">收藏</a></li>
+					
 						<li><a href="/about">关于我</a></li>
 					
 					<li>
@@ -80,7 +82,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/18/web-aria/" title="WAI-ARIA 无障碍网页应用技术" itemprop="url">WAI-ARIA 无障碍网页应用技术</a>
+      <a href="/2015/03/18/web-aria/" title="初识WAI-ARIA（无障碍网页应用技术）" itemprop="url">初识WAI-ARIA（无障碍网页应用技术）</a>
   </h1>
   <p class="article-author">By
        
@@ -94,9 +96,14 @@
     <div class="article-content">
         
         <blockquote>
-<p>WAI-ARIA[1] , 是Web Accessibility Initiative - Accessible Rich Internet Applications 的缩写，指无障碍网页应用技术。她主要解决的一个问题：让残障人士能无障碍地访问网页上的动态内容。</p>
-<p>the Accessible Rich Internet Applications Suite, 可帮助访问Web内容和Web应用有困难的用户进行访问的方法（比如用静态的(screen-reading technologies)浏览器浏览用Ajax技术制作的动态网页）。它尤其帮助动态内容和用Ajax, HTML, JavaScript和相关技术开发的高级用户接口控件。</p>
+<p><a href="http://baike.baidu.com/link?url=g7DXWVXLYALL3jvfuZAMRLo_fX-D4YZcQ_qH6zubSSpNUyz0lYFNIxBCHxYmTEZRt2FS0ZfXahvQcAiX4OdLJ_" target="_blank" rel="external">WAI-ARIA</a>, 是Web Accessibility Initiative - Accessible Rich Internet Applications 的缩写，指无障碍网页应用技术。它主要解决的一个问题：让残障人士能无障碍地访问网页上的动态内容。</p>
+<p>The Accessible Rich Internet Applications Suite, 可帮助访问Web内容和Web应用有困难的用户进行访问的方法（比如用静态的(screen-reading technologies)浏览器浏览用Ajax技术制作的动态网页）。它尤其帮助动态内容和用Ajax, HTML, JavaScript和相关技术开发的高级用户接口控件。</p>
+<p>更多信息请看w3c关于aria的文档：<a href="http://www.w3.org/WAI/intro/aria.php" target="_blank" rel="external">w3c aria</a></p>
 </blockquote>
+<h2 id="ARIA提供的解决方案">ARIA提供的解决方案</h2><p>WAI-ARIA 通过添加一系列的属性去标识用户交互特征，各个组件之间的相互关系，以及各自的状态。WAI-ARIA提供一种新的导航技术去标记区域或常见的网页结构，比如：菜单、主要内容、次要内容、横幅（banner）等等……举个例子，开发者可以通过WAI-ARIA去标识页面区域，以至于让键盘用户不在需要切换很多次的‘tab’键，就能轻而易举地在各个区域之间切换。</p>
+<p>WAI-ARIA 提供了如下功能：<br>1.角色（roles），描述组件类型，比如菜单（menu），滑块（slider）等……<br>2.角色（roles），描述页面结构，比如标题（heading），表格（grid）等……<br>3.属性（Properties），描述组件的状态，比如复选框的选中状态（checked），菜单是否有弹出层（haspopup）等……<br>4.属性（Properties），定义页面可能动态更新的活跃区域，以及它们的更新机制，比如，关键的更新会出现在对话框中，而不重要的更新直接在页面进行……<br>5.属性（Properties），拖拽时描述‘拖拽源’和‘拖拽目标’……<br>6.使用户能通过键盘来控制web对象及事件……</p>
+<p>各种role见：<a href="http://www.w3.org/TR/wai-aria/roles#landmark_roles" target="_blank" rel="external">WAI-ARIA Roles</a></p>
+<p>各种属性见：<a href="http://www.w3.org/TR/wai-aria/states_and_properties" target="_blank" rel="external">WAI-ARIA States and Properties</a></p>
 
         
         
