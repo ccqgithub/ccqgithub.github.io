@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>FIS 使用心得（一） | 小前端</title>
+    <title>FIS 使用心得一（前言） | 小前端</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="season.chen">
@@ -19,8 +19,8 @@
 
 说起前端工程师的工作，大致分为：切图、html、css、js，要求多一点：图片拼接（css spri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FIS 使用心得（一）">
-<meta property="og:url" content="/2015/03/19/fis-1/index.html">
+<meta property="og:title" content="FIS 使用心得一（前言）">
+<meta property="og:url" content="/2015/03/19/fis/fis-1/index.html">
 <meta property="og:site_name" content="小前端">
 <meta property="og:description" content="FIS是专为解决前端开发中自动化工具、性能优化、模块化框架、开发规范、代码部署、开发流程等问题的工具框架。
 专注于前端构建，无需进行任何配置轻松应付常见需求。个问题：让残障人士能无障碍地访问网页上的动态内容。
@@ -30,7 +30,7 @@
 
 说起前端工程师的工作，大致分为：切图、html、css、js，要求多一点：图片拼接（css spri">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FIS 使用心得（一）">
+<meta name="twitter:title" content="FIS 使用心得一（前言）">
 <meta name="twitter:description" content="FIS是专为解决前端开发中自动化工具、性能优化、模块化框架、开发规范、代码部署、开发流程等问题的工具框架。
 专注于前端构建，无需进行任何配置轻松应付常见需求。个问题：让残障人士能无障碍地访问网页上的动态内容。
 
@@ -98,14 +98,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/19/fis-1/" title="FIS 使用心得（一）" itemprop="url">FIS 使用心得（一）</a>
+      <a href="/2015/03/19/fis/fis-1/" title="FIS 使用心得一（前言）" itemprop="url">FIS 使用心得一（前言）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="season.chen" target="_blank" itemprop="author">season.chen</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-19T09:43:59.000Z" itemprop="datePublished"> 发表于 2015-03-19</time>
+    <time datetime="2015-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 2015-03-19</time>
     
   </p>
 </header>
@@ -114,7 +114,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端工程师都在做什么？"><span class="toc-number">1.</span> <span class="toc-text">前端工程师都在做什么？</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端工程师都在做什么？"><span class="toc-number">1.</span> <span class="toc-text">前端工程师都在做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那么问题就来了"><span class="toc-number">2.</span> <span class="toc-text">那么问题就来了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">3.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这么多解决方案，我为什喜欢FIS？"><span class="toc-number">4.</span> <span class="toc-text">这么多解决方案，我为什喜欢FIS？</span></a></li></ol>
 		
 		</div>
 		
@@ -179,7 +179,7 @@ function foo() {
     <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre><p>前端就这些事？当然不是！当做一个特别简单的网站的时候，前面说的这些就差不多了。但是当网站做到一定规模，代码量十分庞大，功能交互非常复杂，对性能要求很高的时候，问题就渐渐出来了……</p>
-<ul>
+<h2 id="那么问题就来了">那么问题就来了</h2><ul>
 <li><p>图片icon：<br>网站一般都会用的很多小图标，一开始我们是切成一个个小小的图片，然后写进css。可是后来发现数量庞大的小图片会发出很多次请求，大大滴干扰了服务器的性能。于是css sprites出现了，就是将一个个小小的图片拼接成一个的图片，然后在css中通过‘背景位置’来定义一个个小图标，这样许多图标就只需要发出一个请求。<br>那么问题来了，每次更换图标都有拼接，还要去量一个个图标的坐标，累死人了有木有……</p>
 </li>
 <li><p>资源压缩合并：<br>随着网站的复杂度增加，代码量也在增加。js文件从一个请求到几十个请求，从1k到几百k甚至几M。网络的负担很重。怎么办呢，可以讲多个js合并为一个js，然后进行压缩，将空格注释去掉，将长单词换成短单词。<br>那么问题来了，怎么拼？怎么压？</p>
@@ -190,12 +190,32 @@ function foo() {
 </li>
 <li><p>资源嵌入：<br>有时候我们需要将各个页面的公用部分（比如：header.tpl）提取出来，然后在需要的地方嵌入，有时候需要将img转换为src:base64的格式而不是url。<br>那么问题来了，怎么嵌入？ajax（切！）? 后端代码（滚蛋，我们在讨论前端）？或者……？</p>
 </li>
-<li><p>资源定位：<br>你有木有这种困惑，就是页面引入一张图片或者css、js的时候，该怎么定义它们的路径？绝对路径？相对路径？<br>如果我们用根路径（‘/’）,突然网站从一级目录搬到了二级目录怎么办(比如网站根路径从’<a href="http://yourdomain.com" target="_blank" rel="external">http://yourdomain.com</a>‘ -&gt; ‘<a href="http://yourdomain.com/myweb/&#39;)？" target="_blank" rel="external">http://yourdomain.com/myweb/&#39;)？</a><br>用相对路径？css里的路径是相对css的，js的路径是相对引用它的html的，很乱有木有，说说都晕了。<br>更高级的时候，有可能发布后的目录结构和开发的目录结构不一样（比如图片统一放到静态资源服务器）</p>
+<li><p>资源定位：<br>你有木有这种困惑，就是页面引入一张图片或者css、js的时候，该怎么定义它们的路径？绝对路径？相对路径？<br>如果我们用根路径（‘/’）,突然网站从一级目录搬到了二级目录怎么办(比如网站根路径从’<a href="http://yourdomain.com" target="_blank" rel="external">http://yourdomain.com</a>‘ -&gt; ‘<a href="http://yourdomain.com/myweb/&#39;)？" target="_blank" rel="external">http://yourdomain.com/myweb/&#39;)？</a><br>用相对路径？css里的路径是相对css的，js的路径是相对引用它的html的，很乱有木有，说说都晕了。<br>更高级的时候，有可能发布后的目录结构和开发的目录结构不一样（比如图片统一放到静态资源服务器）<br>那么问题来了，肿么办呢？</p>
 </li>
-<li><p>版本号管理</p>
+<li><p>版本号管理<br>为了解决浏览器缓存问题，我们常常需要给静态资源文件添加一个版本号。<br>那么问题来了，肿么加？一个个加？通过后端代码加（我们只谈前端好吧）？</p>
 </li>
 </ul>
-<p>……未完待续……</p>
+<h2 id="解决方案">解决方案</h2><p>针对上诉几个问题，也许每个团队都有自己的方案，也出现过许多不错的并且名声远扬的方案。</p>
+<ul>
+<li><p>lab.js<br>早起的js加载方案，可以用来动态加载js</p>
+</li>
+<li><p>require.js sea.js esl.js<br>js模块化解决方案，不管是cmd还是amd，都大同小异，用来解决模块依赖和按需加载</p>
+</li>
+<li><p>grunt.js<br>Grunt是基于Node.js的项目构建工具。它可以自动运行你所设定的任务。Grunt拥有数量庞大的插件,几乎任何你所要做的事情都可以用Grunt实现。</p>
+</li>
+<li><p>gulp.js<br>新生代流式（pipe）构建工具，最近风头正盛</p>
+</li>
+<li><p>Bower，Component，npm，Browserify<br>各种包管理工具</p>
+</li>
+<li><p>FIS<br>真正的前端解决方案</p>
+</li>
+</ul>
+<h2 id="这么多解决方案，我为什喜欢FIS？">这么多解决方案，我为什喜欢FIS？</h2><p>个人认为，前面几种解决方案，却是都很不错，但是总感觉他们都是只能解决前端开发中的一部分问题。比如最近很火的gulp，基于流式的构建的确很新颖，使用起来也很爽。<br>不过，好多东西实现起来很困难（有人也许会反对，说它无所不能……），比如我要公共组件引用嵌入、自动css sprite、变目录结构是的资源依赖等等……虽然用各种各样的插件好像每个功能都能实现，但是总觉得缺乏一种系统的感觉……<br>上面是个人的浅见，因为本人使用gulp的时间的确不多，所以不喜勿喷……</p>
+<blockquote>
+<p>那么，为什么使用FIS，因为我发现它的理念很先进，并且能实现几乎一切我想实现的功能。</p>
+<p>如若说其他都是“前端工具”的话，FIS就是真正的“前端解决方案”</p>
+</blockquote>
+<p>好了，啰嗦了这么多，下一章进入正题。。请看：FIS 使用心得（二）</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -209,7 +229,7 @@ function foo() {
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/前端解决方案/">前端解决方案</a><a href="/tags/压缩/">压缩</a><a href="/tags/打包/">打包</a><a href="/tags/构建工具/">构建工具</a><a href="/tags/模块化/">模块化</a><a href="/tags/编译/">编译</a>
+  <span></span> <a href="/tags/FIS/">FIS</a><a href="/tags/前端解决方案/">前端解决方案</a><a href="/tags/压缩/">压缩</a><a href="/tags/打包/">打包</a><a href="/tags/构建工具/">构建工具</a><a href="/tags/模块化/">模块化</a><a href="/tags/编译/">编译</a>
   </div>
 
 </div>
@@ -218,7 +238,7 @@ function foo() {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/2015/03/19/fis-1/" data-title="FIS 使用心得（一） | 小前端" data-tsina="null" class="share clearfix">
+	  <div data-url="/2015/03/19/fis/fis-1/" data-title="FIS 使用心得一（前言） | 小前端" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -231,6 +251,14 @@ function foo() {
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/03/19/fis/fis-2/" title="FIS 使用心得二（核心）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  FIS 使用心得二（核心）</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/03/18/web-aria/"  title="初识WAI-ARIA（无障碍网页应用技术）">
@@ -244,7 +272,7 @@ function foo() {
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/03/19/fis-1/" data-title="FIS 使用心得（一）" data-url="/2015/03/19/fis-1/"></div>
+	<div class="ds-thread" data-thread-key="2015/03/19/fis/fis-1/" data-title="FIS 使用心得一（前言）" data-url="/2015/03/19/fis/fis-1/"></div>
 </section>
 
 
@@ -254,7 +282,7 @@ function foo() {
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端工程师都在做什么？"><span class="toc-number">1.</span> <span class="toc-text">前端工程师都在做什么？</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端工程师都在做什么？"><span class="toc-number">1.</span> <span class="toc-text">前端工程师都在做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那么问题就来了"><span class="toc-number">2.</span> <span class="toc-text">那么问题就来了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">3.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这么多解决方案，我为什喜欢FIS？"><span class="toc-number">4.</span> <span class="toc-text">这么多解决方案，我为什喜欢FIS？</span></a></li></ol>
  
   </div>
 
@@ -268,7 +296,15 @@ function foo() {
 		<ul>
 		
 		  
-			<li><a href="/categories/web/" title="web">web<sup>2</sup></a></li>
+			<li><a href="/categories/tool/" title="tool">tool<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/web/" title="web">web<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/实用函数/" title="实用函数">实用函数<sup>1</sup></a></li>
 		  
 		
 		  
@@ -285,7 +321,59 @@ function foo() {
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端解决方案/" title="前端解决方案">前端解决方案<sup>1</sup></a></li>
+				<li><a href="/tags/构建工具/" title="构建工具">构建工具<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模块化/" title="模块化">模块化<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/压缩/" title="压缩">压缩<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/编译/" title="编译">编译<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端解决方案/" title="前端解决方案">前端解决方案<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/FIS/" title="FIS">FIS<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码/" title="代码">代码<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文本编辑器/" title="文本编辑器">文本编辑器<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/写作/" title="写作">写作<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime/" title="Sublime">Sublime<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/快捷键/" title="快捷键">快捷键<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/aria/" title="aria">aria<sup>1</sup></a></li>
 			
 		
 			
@@ -305,27 +393,11 @@ function foo() {
 			
 		
 			
-				<li><a href="/tags/aria/" title="aria">aria<sup>1</sup></a></li>
+				<li><a href="/tags/博客/" title="博客">博客<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/模块化/" title="模块化">模块化<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/压缩/" title="压缩">压缩<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/编译/" title="编译">编译<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/构建工具/" title="构建工具">构建工具<sup>1</sup></a></li>
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
 			
 		
 		</ul>

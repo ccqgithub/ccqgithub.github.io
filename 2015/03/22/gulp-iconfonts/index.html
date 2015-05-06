@@ -4,34 +4,52 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>从今天起，沉下心来，记点东西！ | 小前端</title>
+    <title>使用gulp很容易地创建本地iconfont（矢量图标）字体库 | 小前端</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="season.chen">
     
 
     
-    <meta name="description" content="很早以前就准备自己建个博客，从新浪博客到wordpress，再从wordpress到hexo，再从hexo到自己建站，然后回归hexo。
-瞎折腾了许久，可转首一看，却发现什么也没留下。而反观别人的博客，却像森林一般生机勃勃，越来越茂盛。
-这不禁让我开始反思，我这些时间都做了些什么？
-一路走来，学了不少东西，可也发现自己在渐渐遗忘。人的记忆不是恒久的，有些东西必须要记录下来才有意义。
-回想当初，也许">
+    <meta name="description" content="iconfont越来越流行，出现了像阿里巴巴矢量图标库，IcoMoon等优秀的在线字体管理工具。
+但是如果我们需要在没有网的时候使用本地图标库的时候怎么办？通过gulp能很容易的实现。我的一个例子。
+
+使用很简单，克隆代码.
+// 切换目录
+cd dir
+// 安装依赖包
+npm install
+// 生成html、css、fonts
+gulp
+然后打开‘out/index.html’,你就会发现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从今天起，沉下心来，记点东西！">
-<meta property="og:url" content="/2015/03/18/hello-world/index.html">
+<meta property="og:title" content="使用gulp很容易地创建本地iconfont（矢量图标）字体库">
+<meta property="og:url" content="/2015/03/22/gulp-iconfonts/index.html">
 <meta property="og:site_name" content="小前端">
-<meta property="og:description" content="很早以前就准备自己建个博客，从新浪博客到wordpress，再从wordpress到hexo，再从hexo到自己建站，然后回归hexo。
-瞎折腾了许久，可转首一看，却发现什么也没留下。而反观别人的博客，却像森林一般生机勃勃，越来越茂盛。
-这不禁让我开始反思，我这些时间都做了些什么？
-一路走来，学了不少东西，可也发现自己在渐渐遗忘。人的记忆不是恒久的，有些东西必须要记录下来才有意义。
-回想当初，也许">
+<meta property="og:description" content="iconfont越来越流行，出现了像阿里巴巴矢量图标库，IcoMoon等优秀的在线字体管理工具。
+但是如果我们需要在没有网的时候使用本地图标库的时候怎么办？通过gulp能很容易的实现。我的一个例子。
+
+使用很简单，克隆代码.
+// 切换目录
+cd dir
+// 安装依赖包
+npm install
+// 生成html、css、fonts
+gulp
+然后打开‘out/index.html’,你就会发现">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从今天起，沉下心来，记点东西！">
-<meta name="twitter:description" content="很早以前就准备自己建个博客，从新浪博客到wordpress，再从wordpress到hexo，再从hexo到自己建站，然后回归hexo。
-瞎折腾了许久，可转首一看，却发现什么也没留下。而反观别人的博客，却像森林一般生机勃勃，越来越茂盛。
-这不禁让我开始反思，我这些时间都做了些什么？
-一路走来，学了不少东西，可也发现自己在渐渐遗忘。人的记忆不是恒久的，有些东西必须要记录下来才有意义。
-回想当初，也许">
+<meta name="twitter:title" content="使用gulp很容易地创建本地iconfont（矢量图标）字体库">
+<meta name="twitter:description" content="iconfont越来越流行，出现了像阿里巴巴矢量图标库，IcoMoon等优秀的在线字体管理工具。
+但是如果我们需要在没有网的时候使用本地图标库的时候怎么办？通过gulp能很容易的实现。我的一个例子。
+
+使用很简单，克隆代码.
+// 切换目录
+cd dir
+// 安装依赖包
+npm install
+// 生成html、css、fonts
+gulp
+然后打开‘out/index.html’,你就会发现">
 
     
     <link rel="alternative" href="/atom.xml" title="小前端" type="application/atom+xml">
@@ -92,14 +110,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/18/hello-world/" title="从今天起，沉下心来，记点东西！" itemprop="url">从今天起，沉下心来，记点东西！</a>
+      <a href="/2015/03/22/gulp-iconfonts/" title="使用gulp很容易地创建本地iconfont（矢量图标）字体库" itemprop="url">使用gulp很容易地创建本地iconfont（矢量图标）字体库</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="season.chen" target="_blank" itemprop="author">season.chen</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-18T04:01:32.000Z" itemprop="datePublished"> 发表于 2015-03-18</time>
+    <time datetime="2015-03-22T15:48:01.000Z" itemprop="datePublished"> 发表于 2015-03-22</time>
     
   </p>
 </header>
@@ -112,19 +130,19 @@
 		
 		</div>
 		
-		<p>很早以前就准备自己建个博客，从新浪博客到wordpress，再从wordpress到hexo，再从hexo到自己建站，然后回归hexo。</p>
-<p>瞎折腾了许久，可转首一看，却发现什么也没留下。而反观别人的博客，却像森林一般生机勃勃，越来越茂盛。</p>
-<p>这不禁让我开始反思，我这些时间都做了些什么？</p>
-<p>一路走来，学了不少东西，可也发现自己在渐渐遗忘。人的记忆不是恒久的，有些东西必须要记录下来才有意义。</p>
-<p>回想当初，也许是有一点强迫症作怪，做了又改，改了又做，总觉得不够尽善尽美。如此往往复复也不知经历了多少个版本，时间溜走了，东西却没留下。</p>
-<p>直至如今，才发觉自己一直走在一条错误的道路上。</p>
-<p>经历了太多才明白，其实这世上根本就没有完美的东西。</p>
-<p>大道至简，空有其表没有内容的东西，终究没有什么意义。</p>
-<p>相反，简简单单的东西，积累起来，那才是一笔宝贵的财富。</p>
-<p>所以，从今天去，沉下心来，认认真真记录一点东西。</p>
-<p>幸好，有些牛人，早已替我铺好了路。</p>
-<p>感谢 <a href="http://hexo.io/" target="_blank" rel="external">hexo</a> ，让我轻而易举地能迈开脚步。</p>
-<p>也感谢hexo主题 <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>，让我的博客能轻而易举地看起来漂亮。</p>
+		<blockquote>
+<p>iconfont越来越流行，出现了像<a href="http://www.iconfont.cn/" target="_blank" rel="external">阿里巴巴矢量图标库</a>，<a href="https://icomoon.io/icons.html" target="_blank" rel="external">IcoMoon</a>等优秀的在线字体管理工具。</p>
+<p>但是如果我们需要在没有网的时候使用本地图标库的时候怎么办？通过<a href="http://gulpjs.com/" target="_blank" rel="external">gulp</a>能很容易的实现。<a href="https://github.com/ccqgithub/sherry-iconfont-lib" target="_blank" rel="external">我的一个例子</a>。</p>
+</blockquote>
+<p>使用很简单，克隆代码.</p>
+<pre><code><span class="comment">// 切换目录</span>
+<span class="keyword">cd</span> <span class="keyword">dir</span>
+<span class="comment">// 安装依赖包</span>
+npm install
+<span class="comment">// 生成html、css、fonts</span>
+gulp
+</code></pre><p>然后打开‘out/index.html’,你就会发现svgs目录下面的所有svg图标都转为iconfonts了，是不是soeasy！！！</p>
+<p>当然你还可以自己修改‘tpl/*’里面的模板文件和‘gulpfile.js’来生成你自己的格式哦！！！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -132,13 +150,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/生活/">生活</a>
+  <a class="article-category-link" href="/categories/web/">web</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/心情日记/">心情日记</a>
+  <span></span> <a href="/tags/gulp/">gulp</a><a href="/tags/gulp-iconfont/">gulp-iconfont</a><a href="/tags/iconfont/">iconfont</a><a href="/tags/本地字体库/">本地字体库</a>
   </div>
 
 </div>
@@ -147,7 +165,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/2015/03/18/hello-world/" data-title="从今天起，沉下心来，记点东西！ | 小前端" data-tsina="null" class="share clearfix">
+	  <div data-url="/2015/03/22/gulp-iconfonts/" data-title="使用gulp很容易地创建本地iconfont（矢量图标）字体库 | 小前端" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,19 +179,27 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/03/18/web-aria/" title="初识WAI-ARIA（无障碍网页应用技术）">
+ <a href="/2015/04/27/hexo/hexo-1/" title="Hexo 使用技巧">
   <strong>上一篇：</strong><br/>
   <span>
-  初识WAI-ARIA（无障碍网页应用技术）</span>
+  Hexo 使用技巧</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2015/03/19/fis/fis-6/"  title="FIS 使用心得六（建议和期待）">
+ <strong>下一篇：</strong><br/> 
+ <span>FIS 使用心得六（建议和期待）
+</span>
+</a>
+</div>
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/03/18/hello-world/" data-title="从今天起，沉下心来，记点东西！" data-url="/2015/03/18/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="2015/03/22/gulp-iconfonts/" data-title="使用gulp很容易地创建本地iconfont（矢量图标）字体库" data-url="/2015/03/22/gulp-iconfonts/"></div>
 </section>
 
 
@@ -197,7 +223,15 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/web/" title="web">web<sup>2</sup></a></li>
+			<li><a href="/categories/tool/" title="tool">tool<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/web/" title="web">web<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/实用函数/" title="实用函数">实用函数<sup>1</sup></a></li>
 		  
 		
 		  
@@ -214,7 +248,59 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端解决方案/" title="前端解决方案">前端解决方案<sup>1</sup></a></li>
+				<li><a href="/tags/构建工具/" title="构建工具">构建工具<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模块化/" title="模块化">模块化<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/压缩/" title="压缩">压缩<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/编译/" title="编译">编译<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端解决方案/" title="前端解决方案">前端解决方案<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/FIS/" title="FIS">FIS<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码/" title="代码">代码<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文本编辑器/" title="文本编辑器">文本编辑器<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/写作/" title="写作">写作<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime/" title="Sublime">Sublime<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/快捷键/" title="快捷键">快捷键<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/aria/" title="aria">aria<sup>1</sup></a></li>
 			
 		
 			
@@ -234,27 +320,11 @@
 			
 		
 			
-				<li><a href="/tags/aria/" title="aria">aria<sup>1</sup></a></li>
+				<li><a href="/tags/博客/" title="博客">博客<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/模块化/" title="模块化">模块化<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/压缩/" title="压缩">压缩<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/编译/" title="编译">编译<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/构建工具/" title="构建工具">构建工具<sup>1</sup></a></li>
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
 			
 		
 		</ul>
