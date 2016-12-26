@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>前端工程化概述</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/sky.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+    <link rel="stylesheet" href="../reveal/plugin/highlight/styles/dracula.css">
+
+    <link rel="stylesheet" href="../reveal/css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+        <section>
+          <h1>前端工程化概述</h1>
+            <h3>Season Chen</h3>
+          <p>
+            <h4>2016-12-14</h4>
+          </p>
+        </section>
+
+        
+				<section id="很久以前" class="level2">
+<h2>很久以前</h2>
+<blockquote>
+<p>页面是这样的, 大多数用table布局，html、样式、脚本混合在一起。</p>
+</blockquote>
+<pre class="html"><code>&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;&quot;&gt;
+  &lt;tr style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;&quot;&gt;
+    &lt;td class=&quot;content-block&quot; style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;&quot; valign=&quot;top&quot;&gt;
+      You have &lt;strong style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;&quot;&gt;1 free report&lt;/strong&gt; remaining.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;&quot;&gt;
+    &lt;td class=&quot;content-block&quot; style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;&quot; valign=&quot;top&quot;&gt;
+      Add your credit card now to upgrade your account to a premium plan to ensure you don&#39;t miss out on any reports.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;&quot;&gt;
+    &lt;td class=&quot;content-block&quot; style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;&quot; valign=&quot;top&quot;&gt;
+      &lt;a href=&quot;http://www.mailgun.com&quot; class=&quot;btn-primary&quot; style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #348eda; margin: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px;&quot;&gt;Upgrade my account&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;&quot;&gt;
+    &lt;td class=&quot;content-block&quot; style=&quot;font-family: &#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;&quot; valign=&quot;top&quot; onclick=&quot;alert(&#39;hello word!&#39;)&quot;&gt;
+      Thanks for choosing Acme Inc.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</section>
+<section id="之后" class="level2">
+<h2>之后</h2>
+<blockquote>
+<p>出现了结构、表现和行为分离，出现了独立的css（层叠样式表）文件和独立的js文件, 流行div布局。</p>
+</blockquote>
+<p>这样：</p>
+<pre class="html"><code>&lt;style&gt;
+.test{
+  font-size: 20px;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;test&quot;&gt;
+  hello word ！
+&lt;/div&gt;
+
+&lt;script&gt;
+  alert(&#39;hellow word !&#39;);
+&lt;/script&gt;</code></pre>
+<p>或者这样：</p>
+<pre class="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./common.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./a.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./b.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./c.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./test.css&quot;&gt;
+
+&lt;div class=&quot;test&quot;&gt;
+  hello word ！
+&lt;/div&gt;
+
+&lt;script src=&quot;./common.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./a.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./b.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./c.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./test.js&quot;&gt;&lt;/script&gt;</code></pre>
+</section>
+<section id="section" class="level2">
+<h2></h2>
+<section id="section-1" class="level3">
+<h3></h3>
+<p>再之后</p>
+</section>
+<section id="section-2" class="level3">
+<h3></h3>
+<p>项目越来越大，就出现一些需要解决的问题：</p>
+<ul>
+<li class="fragment grow">
+项目越来越大了，业务逻辑越来越复杂
+</li>
+<li class="fragment grow">
+文件体积越来越大了，抢占网络带宽
+</li>
+<li class="fragment grow">
+文件数量越来越多，服务器压力增大
+</li>
+<li class="fragment grow">
+css、js的干扰、冲突增多，维护苦难
+</li>
+<li class="fragment grow">
+小图标大量使用
+</li>
+<li class="fragment grow">
+js语言特性，很难写出统一规范的代码
+</li>
+<li class="fragment grow">
+大文件如何拆分，代码如何重用
+</li>
+<li class="fragment grow">
+资源如何能按需加载
+</li>
+<li class="fragment grow">
+资源打包
+</li>
+<li class="fragment grow">
+资源压缩
+</li>
+<li class="fragment grow">
+资源之间的依赖关系
+</li>
+<li class="fragment grow">
+资源路径的灵活配置（CDN等）
+</li>
+</ul>
+</section>
+<section id="section-3" class="level3">
+<h3></h3>
+<p>为了解决上述问题，以下简单地从各个几方面来分别阐述</p>
+</section>
+</section>
+<section id="section-4" class="level2">
+<h2></h2>
+<section id="js模块化" class="level3">
+<h3>JS模块化</h3>
+<p>解决代码重用的问题</p>
+<ul>
+<li class="fragment">
+CommonJS规范
+</li>
+<li class="fragment">
+AMD规范
+</li>
+<li class="fragment">
+CMD规范
+</li>
+<li class="fragment">
+UMD规范
+</li>
+</ul>
+</section>
+<section id="commonjs规范" class="level3">
+<h3>CommonJS规范</h3>
+<p>nodejs环境使用的模块规范，CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}。 require()用来引入外部模块；exports对象用于导出当前模块的方法或变量，唯一的导出口；module对象就代表模块本身。</p>
+<pre class="js"><code>// test.js
+module.exports = function() {
+  //
+}
+
+//main.js
+
+var test = require(&#39;test&#39;);
+test();</code></pre>
+</section>
+<section id="amd异步模块定义规范" class="level3">
+<h3>AMD(异步模块定义)规范</h3>
+<p>AMD是&quot;Asynchronous Module Definition&quot;的缩写，意思就是&quot;异步模块定义&quot;。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。</p>
+<p>RequireJS 在推广过程中对模块定义的规范化产出</p>
+<ul>
+<li>define(id?, dependencies?, factory);</li>
+<li>require(dependencies, callback);</li>
+</ul>
+<pre class="js"><code>// 模块c定义
+define([&#39;../a&#39;, &#39;../b&#39;], function(require, exports, module){
+  var a = require(&#39;a&#39;),
+    b = require(&#39;b&#39;);
+
+  exports.action = function(){};
+});
+
+// 模块c调用
+require([&#39;../c&#39;], function(m) {
+  m.action();
+});</code></pre>
+</section>
+<section id="cmd规范" class="level3">
+<h3>CMD规范</h3>
+<p>CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。</p>
+<ul>
+<li>seajs.use</li>
+<li>define</li>
+<li>require</li>
+</ul>
+</section>
+<section id="umd规范" class="level3">
+<h3>UMD规范</h3>
+<p>UMD是AMD和CommonJS的糅合, 同时支持在node环境和浏览器环境中运行。UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。在判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
+<pre class="js"><code>(function (window, factory) {
+     if (typeof exports === &#39;object&#39;) {
+          module.exports = factory();
+     } else if (typeof define === &#39;function&#39; &amp;&amp; define.amd) {
+          define(factory);
+     } else {
+          window.eventUtil = factory();
+     }
+})(this, function () {
+     // module ...
+});</code></pre>
+</section>
+</section>
+<section id="section-5" class="level2">
+<h2></h2>
+<section id="section-6" class="level3">
+<h3></h3>
+<p>js模板引擎(输入数据，输出html)</p>
+</section>
+<section id="为什么需要模板引擎" class="level3">
+<h3>为什么需要模板引擎</h3>
+<p>平常不用模板引擎，生成html片段的做法：</p>
+<pre class="js"><code>html = &#39;&lt;!doctype html&gt;&#39;;
+html += &#39;&lt;html&gt;&#39;;
+html += &#39;&lt;head&gt;&#39;;
+html += &#39;&lt;title&gt;&#39; + pathname + &#39;&lt;/title&gt;&#39;;
+html += &#39;&lt;/head&gt;&#39;;
+html += &#39;&lt;body&gt;&#39;;
+html += &#39;&lt;h1&gt; - &#39; + pathname + &#39;&lt;/h1&gt;&#39;;
+html += &#39;&lt;div id=&quot;file-list&quot;&gt;&#39;;
+html += &#39;&lt;ul&gt;&#39;;
+
+if (pathname != &#39;/&#39;) {
+  html += &#39;&lt;li&gt;&lt;a href=&quot;&#39; + pathname + &#39;..&quot;&gt;..&lt;/a&gt;&lt;/li&gt;&#39;;
+}
+
+files
+  .forEach(function(item) {
+    var s_url = path.join(pathname, item);
+    html += &#39;&lt;li&gt;&lt;a href=&quot;&#39; + s_url + &#39;&quot;&gt;&#39; + item + &#39;&lt;/a&gt;&lt;/li&gt;&#39;;
+  });
+
+html += &#39;&lt;/ul&gt;&#39;;
+html += &#39;&lt;/div&gt;&#39;;
+html += &#39;&lt;/body&gt;&#39;;
+html += &#39;&lt;/html&gt;&#39;;
+</code></pre>
+<p>使用模板引擎：</p>
+<pre class="js"><code>var template = `
+  &lt;ul&gt;
+  &lt;% for(var i=0; i&lt;supplies.length; i++) {%&gt;
+     &lt;li&gt;&lt;%= supplies[i] %&gt;&lt;/li&gt;
+  &lt;% } %&gt;
+  &lt;/ul&gt;
+`;
+
+var data = {};
+var html = ejs.render(template, data)</code></pre>
+</section>
+<section id="section-7" class="level3">
+<h3></h3>
+<ul>
+<li>baiduTemplate（百度）</li>
+<li>artTemplate（腾讯）</li>
+<li>juicer（淘宝）</li>
+<li>ejs</li>
+<li>...</li>
+</ul>
+</section>
+<section id="各模板测试数据" class="level3">
+<h3>各模板测试数据</h3>
+<figure>
+<img src="http://img.blog.csdn.net/20130517105426822" alt="各模板测试数据" /><figcaption>各模板测试数据</figcaption>
+</figure>
+</section>
+<section id="ejs模板引擎示例" class="level3">
+<h3>ejs模板引擎示例</h3>
+<pre class="html"><code>&lt;ul&gt;
+&lt;% for(var i=0; i&lt;supplies.length; i++) {%&gt;
+   &lt;li&gt;&lt;%= supplies[i] %&gt;&lt;/li&gt;
+&lt;% } %&gt;
+&lt;/ul&gt;</code></pre>
+<pre class="js"><code>ejs.render(template, data);</code></pre>
+</section>
+</section>
+<section id="css-sprites" class="level2">
+<h2>css sprites</h2>
+<p>网站中一个小图标对应一张小图片，一个网站可能会有几十到几百个小图片，打开就会产生几十到几百个请求。</p>
+<p>为了减小网络压力，需要将多个小图标图片合并为一张大图片，然后通过css设置背景的不同位置的方式给小图标展示出来，这就是CSS Sprites；</p>
+<ul>
+<li>手动合并</li>
+<li>工具合并, 图片自动合并，css自动更新</li>
+</ul>
+<pre class="css"><code>.icon-a,
+.icon-b,
+.icon-c {
+  background-image: url(&#39;../sprites.png&#39;);
+}
+.icon-a {
+  background-position: 10px 20px;
+}
+.icon-b {
+  background-position: 30px 20px;
+}
+.icon-c {
+  background-position: 50px 20px;
+}</code></pre>
+</section>
+<section id="iconfont" class="level2">
+<h2>IconFont</h2>
+<p>将图标做成字体，通过字体定义的Unicode编码引用。</p>
+<p>优点：</p>
+<ul>
+<li>维护起来比css sprites方便</li>
+<li>体积比图片更小</li>
+<li>矢量, 可以自定义大小和颜色</li>
+<li>支持一些css3对文字的效果，例如：阴影、旋转、透明度</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>单色</li>
+<li>毛边</li>
+</ul>
+</section>
+<section id="工具网站" class="level2">
+<h2>工具网站</h2>
+<ul>
+<li><a href="http://www.iconfont.cn/">阿里巴巴图标字体库</a></li>
+<li><a href="https://icomoon.io/">IcoMoon</a></li>
+</ul>
+</section>
+<section id="svg-sprites" class="level2">
+<h2>SVG Sprites</h2>
+<p>将多个svg小图标合并成一个大的svg，在页面中引入这个大的svg，然后在图标出通过id引用其中的图片节点。</p>
+<p>目前，SVG Sprite最佳实践是使用symbol元素。</p>
+<p>symbol元素是什么呢？单纯翻译的话，是“符号”的意思。然，这个释义并不符合这里的场景。不知大家有没有用过Flash，symbol实际上就类似于Flash中的“影片剪辑”、或者“元件”。</p>
+<pre class="html"><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; style=&quot;width:0;height:0;visibility:hidden;&quot;&gt;
+  &lt;symbol viewBox=&quot;0 0 1024 1024&quot; id=&quot;iconfont-baobei&quot;&gt;
+    &lt;title&gt;iconfont-baobei&lt;/title&gt;
+    &lt;path fill=&quot;#272636&quot; d=&quot;M...z&quot; transform=&quot;translate(0, 800) scale(1, -1)&quot;/&gt;
+  &lt;/symbol&gt;
+  &lt;symbol viewBox=&quot;0 0 1024 1024&quot; id=&quot;iconfont-bianji&quot;&gt;
+    &lt;title&gt;iconfont-bianji&lt;/title&gt;
+    &lt;path fill=&quot;#272636&quot; d=&quot;M...z&quot; transform=&quot;translate(0, 800) scale(1, -1)&quot;/&gt;
+  &lt;/symbol&gt;
+  &lt;symbol viewBox=&quot;0 0 1024 1024&quot; id=&quot;iconfont-shangchuan&quot;&gt;
+    &lt;title&gt;iconfont-shangchuan&lt;/title&gt;
+    &lt;path fill=&quot;#272636&quot; d=&quot;M...z&quot; transform=&quot;translate(0, 800) scale(1, -1)&quot;/&gt;
+  &lt;/symbol&gt;
+&lt;/svg&gt;
+
+&lt;svg&gt;
+  &lt;use xlink:href=&quot;#iconfont-baobei&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+&lt;svg&gt;
+  &lt;use xlink:href=&quot;#iconfont-bianji&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+&lt;svg&gt;
+  &lt;use xlink:href=&quot;#iconfont-shangchuan&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;</code></pre>
+<p>优点：</p>
+<ul>
+<li>质量更好，不会产生毛边</li>
+<li>可以设置渐变色，动画</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>兼容性</li>
+</ul>
+<p>工具：</p>
+<ul>
+<li><a href="https://github.com/ccqgithub/demo-svg-icons">demo-svg-icons</a></li>
+</ul>
+</section>
+<section id="section-8" class="level2">
+<h2></h2>
+<section id="section-9" class="level3">
+<h3></h3>
+<p>CSS解决方案</p>
+</section>
+<section id="bem-命名规范" class="level3">
+<h3>BEM 命名规范</h3>
+<p>BEM的意思就是块（block）、元素（element）、修饰符（modifier）。</p>
+<pre class="css"><code>.block{}
+.block__element{}
+.block--modifier{}</code></pre>
+</section>
+<section id="css-moudles" class="level3">
+<h3>css moudles</h3>
+<pre class="jsx"><code>import React from &#39;react&#39;;
+import style from &#39;./App.css&#39;;
+
+export default () =&gt; {
+  return (
+    &lt;h1 className={style.title}&gt;
+      Hello World
+    &lt;/h1&gt;
+  );
+};</code></pre>
+<p>缺点：</p>
+<ul>
+<li>必须在js内部使用，合js耦合性太高</li>
+<li>代码太过零散，你不清楚那个js文件调用了哪个css，改一个样式可能牵一发动全身，维护困难</li>
+<li>可能会输出很多重复的样式</li>
+</ul>
+</section>
+<section id="css-scoped" class="level3">
+<h3>css scoped</h3>
+<pre class="html"><code>&lt;div class=&quot;democontain lazy &quot;&gt;
+
+    &lt;style scoped&gt;
+        div { border: 1px solid green; margin-bottom: 20px; min-height: 40px; }
+        .democontain { background: #f8f8f8; }
+    &lt;/style&gt;
+
+    &lt;div&gt;&lt;/div&gt;
+    &lt;div style=&quot;border-color: pink;&quot;&gt;
+
+        &lt;style scoped&gt;
+            div { background: lightblue; border: 1px solid blue; }
+        &lt;/style&gt;
+
+        &lt;div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>缺点：</p>
+<ul>
+<li>必须写在html对应的结构处，不变维护</li>
+</ul>
+</section>
+<section id="变种的-css-scope" class="level3">
+<h3>变种的 css scope</h3>
+<p>通过工具，将一个独立的js文件和对应的css选择器，都加上一个唯一的标志，达到css scoped的目的。</p>
+<pre class="html"><code>&lt;style&gt;
+.test[_xdfdfdf] {
+  //
+}
+&lt;/style&gt;
+&lt;div class=&quot;test&quot; _xdfdfdf&gt;
+  &lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</section>
+<section id="期待的css解决方案" class="level3">
+<h3>期待的css解决方案</h3>
+<ul>
+<li>基于BEM模式的扩展</li>
+<li>利用LESS、SCSS的一些高级特性，生成BEM选择器</li>
+<li>利用工具和相应的规范，自动转换html中的选择器</li>
+</ul>
+</section>
+</section>
+<section id="section-10" class="level2">
+<h2></h2>
+<section id="section-11" class="level3">
+<h3></h3>
+<p>预编译</p>
+</section>
+<section id="js预编译语言" class="level3">
+<h3>js预编译语言</h3>
+<p>更简洁的代码，更规范、更严格的语法规范。</p>
+<ul>
+<li>CoffeeScript</li>
+<li>typescript</li>
+</ul>
+<pre class="coffeescript"><code># 对象:
+math =
+  root:   Math.sqrt
+  square: square
+  cube:   (x) -&gt; x * square x
+
+# Splats:
+race = (winner, runners...) -&gt;
+  print winner, runners
+
+# 存在性:
+alert &quot;I knew it!&quot; if elvis?
+
+# 数组 推导(comprehensions):
+cubes = (math.cube num for num in list)</code></pre>
+</section>
+<section id="html预编译" class="level3">
+<h3>HTML预编译</h3>
+<ul>
+<li>Pug(Jade)</li>
+</ul>
+<pre class="pug"><code>doctype html
+html(lang=&quot;en&quot;)
+  head
+    title= pageTitle
+    script(type=&#39;text/javascript&#39;).
+      if (foo) bar(1 + 5)
+  body
+    h1 Pug - node template engine
+    #container.col
+      if youAreUsingPug
+        p You are amazing
+      else
+        p Get on it!
+      p.
+        Pug is a terse and simple templating language with a
+        strong focus on performance and powerful features.</code></pre>
+</section>
+<section id="css预编译" class="level3">
+<h3>css预编译</h3>
+<p>为什么要css预编译语言？</p>
+<ul>
+<li>变量</li>
+<li>方法</li>
+<li>逻辑控制</li>
+<li>代码重用</li>
+<li>等等...</li>
+</ul>
+<p>常用css预编译语言</p>
+<ul>
+<li>SASS,SCSS</li>
+<li>LESS</li>
+<li>Stylus</li>
+</ul>
+<pre class="scss"><code>.class1{
+  font-size:19px;
+  b {
+    //
+  }
+}
+.class2{
+  @extend .class1;
+  color:black;
+}
+.class1{
+  font-weight:bold;
+}</code></pre>
+</section>
+</section>
+<section id="section-12" class="level2">
+<h2></h2>
+<section id="section-13" class="level3">
+<h3></h3>
+<p>前端模式</p>
+</section>
+<section id="mvc" class="level3">
+<h3>MVC</h3>
+<p>MVC是一种设计模式，它将应用划分为3个部分：数据（模型）、展现层（视图）和用户交互（控制器）。</p>
+<ul>
+<li>模型（M）：数据管理</li>
+<li>视图（V）：展现效果</li>
+<li>控制器（A）：定义交互动作</li>
+</ul>
+<p><img src="http://image.beekka.com/blog/2015/bg2015020106.png" />.</p>
+<p><img src="http://dl.iteye.com/upload/attachment/0068/4913/bc4b2e1a-2821-305d-99e3-a29c24be6e6e.jpg" />.</p>
+</section>
+<section id="mvvm" class="level3">
+<h3>MVVM</h3>
+<p>双向绑定</p>
+<ul>
+<li>KnockOutJS</li>
+<li>AngularJS</li>
+<li>Vue.js</li>
+</ul>
+</section>
+<section id="section-14" class="level3">
+<h3></h3>
+<figure>
+<img src="http://knockoutjs.com/img/homepage-example.png" />
+</figure>
+</section>
+</section>
+<section id="section-15" class="level2">
+<h2></h2>
+<section id="section-16" class="level3">
+<h3></h3>
+<p>前端组件化</p>
+</section>
+<section id="何为组件" class="level3">
+<h3>何为组件？</h3>
+<ul>
+<li>重用</li>
+<li>独立</li>
+<li>标准的输入输出（如viedo标签）</li>
+<li>独立的(css + html + js), 以及 (props + events)</li>
+</ul>
+<pre class="html"><code>&lt;video src=&quot;movie.ogg&quot; controls=&quot;controls&quot;&gt;
+  您的浏览器不支持 video 标签。
+&lt;/video&gt;</code></pre>
+</section>
+<section id="react-组件" class="level3">
+<h3>React 组件</h3>
+<pre class="jsx"><code>require(&#39;test.css&#39;);
+
+React.createClass({
+  protoTypes: {
+    isOpen: PropTypes.bool.isRequired,
+    hubs: PropTypes.array.isRequired,
+    onClose: PropTypes.func.isRequired,
+    type: PropTypes.array.string,
+    className: PropTypes.string,
+
+    callback: protoTypes.function,
+  },
+  render() {
+    return (
+      &lt;div className=&quot;test&quot; @click={this.props.callback}&gt;
+        //
+      &lt;/div&gt;
+    );
+  }
+});</code></pre>
+</section>
+<section id="vue.js-单文件组件" class="level3">
+<h3>vue.js 单文件组件</h3>
+<pre class="html"><code>&lt;!-- vue 组件 --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;span&gt;hello word!&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    props: {
+      visible: Boolean,
+    },
+    data() {
+      return  {
+
+      }
+    }
+  }
+&lt;/script&gt;
+
+&lt;style&gt;
+  div {
+    //
+  }
+&lt;/style&gt;</code></pre>
+</section>
+<section id="shadowdom" class="level3">
+<h3>ShadowDOM</h3>
+<p>Shadow DOM是指浏览器的一种能力，它允许在文档（document）渲染时插入一棵DOM元素子树，但是这棵子树不在主DOM树中。</p>
+</section>
+</section>
+<section id="section-17" class="level2">
+<h2></h2>
+<section id="包管理" class="level3">
+<h3>包管理</h3>
+</section>
+<section id="npm" class="level3">
+<h3>npm</h3>
+<p>Node Package Manager, nodejs的包管理器, 一般随nodejs一起安装。</p>
+<ul>
+<li>package.json</li>
+<li>node_modules</li>
+</ul>
+<pre class="js"><code>npm install</code></pre>
+</section>
+<section id="bower" class="level3">
+<h3>bower</h3>
+<p>A package manager for the web, 依赖于npm，主要作为前端包的管理。</p>
+<ul>
+<li>bower.json</li>
+<li>bower_components</li>
+</ul>
+<pre class="js"><code>bower install</code></pre>
+</section>
+</section>
+<section id="section-18" class="level2">
+<h2></h2>
+<section id="构建工具" class="level3">
+<h3>构建工具</h3>
+</section>
+<section id="grunt" class="level3">
+<h3>grunt</h3>
+<p>JavaScript 世界的构建工具, 老牌的构建工具</p>
+</section>
+<section id="gulp" class="level3">
+<h3>gulp</h3>
+<p>基于文件流(pipe)的构建工具。</p>
+<pre class="js"><code>// gulpfile.js
+var gulp = require(&#39;gulp&#39;);
+
+gulp.task(&#39;default&#39;, function() {
+  // 将你的默认的任务代码放在这
+});</code></pre>
+<p>build:</p>
+<pre><code>$ gulp</code></pre>
+</section>
+<section id="webpack" class="level3">
+<h3>webpack</h3>
+<p>webpack is a module bundler, webpack takes modules with dependencies and generates static assets representing those modules.</p>
+<pre class="js"><code>// webpack.conf.js
+module.exports = {
+  entry: &quot;./entry.js&quot;,
+  output: {
+      path: __dirname,
+      filename: &quot;bundle.js&quot;
+  },
+  module: {
+      loaders: [
+          { test: /\.css$/, loader: &quot;style!css&quot; }
+      ]
+  }
+};</code></pre>
+<p>build:</p>
+<pre class="shell"><code>$ webpack</code></pre>
+</section>
+<section id="fis3" class="level3">
+<h3>FIS3</h3>
+<p>FIS3 , 为你定制的前端工程构建工具, 解决前端开发中自动化工具、性能优化、模块化框架、开发规范、代码部署、开发流程等问题。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/fex-team/fis3/master/doc/docs/api/img/fis-compile-flow.png" />
+</figure>
+<pre class="js"><code>// fis-conf.js
+// test: 测试环境
+[&#39;ut&#39;, &#39;it&#39;, &#39;uat&#39;].forEach(function(env) {
+  fis
+    .media(env)
+    .match(&#39;{src,src-static}/**.{html,js,jsx}&#39;, {
+      preprocessor: fis.plugin(&#39;define&#39;, {
+        defines: config[env].feDefine || {}
+      }, &#39;prepend&#39;)
+    })
+    .match(&#39;**.{js,jsx,css,less,svg,ttf,eot,woff,po,vue,vue:less}&#39;, {useHash: true})
+    .match(&#39;src/demo/(**)&#39;, {release: false})
+    .match(&#39;*.{js,jsx,po,vue}&#39;, {
+      optimizer: fis.plugin(&#39;uglify-js&#39;)
+    })
+    .match(&#39;*.{css,less,styl,vue:less}&#39;, {
+      optimizer: fis.plugin(&#39;clean-css&#39;)
+    })
+    .match(&#39;::package&#39;, {
+      packager: fis.plugin(&#39;deps-pack&#39;, {
+        &#39;pkg/src/pack/npm.js&#39;: [
+          &#39;/src/pack/npm.js:deps&#39;,
+        ]
+      }),
+      postpackager: fis.plugin(&#39;loader&#39;, {
+        allInOne: true
+      }),
+    })
+    .match(&#39;**&#39;, {
+      deploy: fis.plugin(&#39;local-deliver&#39;, {
+        to: path.join(__dirname, &#39;./public/&#39;)
+      })
+    });
+});</code></pre>
+<p>build:</p>
+<pre><code>$ fis3 release ut -w -c</code></pre>
+</section>
+<section id="rolupthree-shaking" class="level3">
+<h3>rolup（Three-shaking）</h3>
+<p>the next-generation JavaScript module bundler. <strong>Three-shaking</strong> 的关键在于依赖 ES6 模块的静态结构。</p>
+<pre class="js"><code>// rollup.config.js
+import json from &#39;rollup-plugin-json&#39;;
+
+export default {
+  entry: &#39;src/main.js&#39;,
+  format: &#39;cjs&#39;,
+  plugins: [ json() ],
+  dest: &#39;bundle.js&#39;
+};</code></pre>
+<p>build:</p>
+<pre><code>rollup</code></pre>
+</section>
+</section>
+<section id="谢谢" class="level2">
+<h2>谢谢</h2>
+</section>
+
+			</div>
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'cube', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{
+            src: '../reveal/lib/js/classList.js',
+            condition: function() { return !document.body.classList; }
+          },
+					{
+            src: '../reveal/plugin/markdown/marked.js',
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+          },
+					{
+            src: '../reveal/plugin/markdown/markdown.js',
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+          },
+					{
+            src: '../reveal/plugin/highlight/highlight.pack.js',
+            async: true,
+            callback: function() { hljs.initHighlightingOnLoad(); }
+          },
+					{
+            src: '../reveal/plugin/zoom-js/zoom.js',
+            async: true
+          },
+					{
+            src: '../reveal/plugin/notes/notes.js',
+            async: true
+          }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

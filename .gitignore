@@ -1,0 +1,15 @@
+.idea/
+
+*.iml
+*.iws
+*.eml
+
+.DS_Store
+.svn
+.sass-cache
+
+log/*.log
+tmp/**
+node_modules/
+
+/**/.git
