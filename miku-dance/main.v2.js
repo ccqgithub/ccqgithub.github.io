@@ -152,7 +152,7 @@ function render(delta) {
   directionalLight.color.setHex(0xFFEEDD);
 
   audio.playbackRate = danceConfig.speed * 1;
-
+console.log(audio.playbackRate)
   if( ikSolver ) {
       ikSolver.update();
   }
