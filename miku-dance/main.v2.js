@@ -58,8 +58,10 @@ function getUrlSearchParam(search) {
 }
 
 function init() {
-    audio.src = settings.musicUrl;
-    audio.load();
+    if (settings.music == 1) {
+      audio.src = settings.musicUrl;
+      audio.load();
+    }
 
     container = document.createElement( 'div' );
     document.body.appendChild( container );
