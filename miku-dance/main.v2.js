@@ -126,7 +126,6 @@ function render(delta) {
         if(dancingTime > 0 || dance) {
             dancingTime -= delta;
             THREE.AnimationHandler.update( delta );
-            battery.style.display = 'none';
             directionalLight.color.setHex(0xFFEEDD);
             if(mute){
                 audio.volume = 0;
@@ -136,7 +135,6 @@ function render(delta) {
             }
         }else{
             THREE.AnimationHandler.update( 0.003 );
-            battery.style.display = 'block';
             directionalLight.color.setHex(0xFF9999);
 
             if(mute){
