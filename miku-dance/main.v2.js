@@ -5,7 +5,7 @@
 var dancingTime = 3;
 var audio = document.querySelector('#miku-music');
 var play = true;
-var mute = false;
+var mute = true;
 var music = false;
 var dance = false;
 var container;
