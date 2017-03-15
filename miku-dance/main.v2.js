@@ -62,7 +62,7 @@ function init() {
     };
 
     var loader = new THREE.MMDLoader();
-    loader.load( '/miku_v2.pmd', '/wavefile_v2.vmd', function ( object ) {
+    loader.load( './miku_v2.pmd', './wavefile_v2.vmd', function ( object ) {
 
         //加载完后赠送10秒播放时间
         dancingTime = 10;
