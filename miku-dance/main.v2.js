@@ -25,7 +25,7 @@ var hashParams = getUrlSearchParam(window.location.hash.replace(/^#/, '?'));
 var settings = {
   music: parseInt(params.music || 0),
   volume: parseFloat(params.volume || 1),
-  musicUrl: params.volume.musicUrl || './bgm.mp3',
+  musicUrl: params.musicUrl || './bgm.mp3',
 }
 
 var danceConfig = {
@@ -150,7 +150,7 @@ function render(delta) {
 
   THREE.AnimationHandler.update( delta * danceConfig.speed);
   directionalLight.color.setHex(0xFFEEDD);
-  
+
   audio.playbackRate = danceConfig.speed * 1;
 
   if( ikSolver ) {
