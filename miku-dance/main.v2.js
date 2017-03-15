@@ -2,13 +2,7 @@
  * Created by sunqi on 16/1/6.
  */
 
-var dancingTime = 3;
 var audio = document.querySelector('#miku-music');
-var battery = document.querySelector('#battery');
-var play = true;
-var mute = false;
-var music = false;
-var dance = false;
 var container;
 
 var mesh, camera, scene, renderer;
@@ -25,9 +19,41 @@ var windowHalfY = window.innerHeight / 2;
 
 var clock = new THREE.Clock();
 
+var params = getUrlSearchParam(window.location.search);
+var hashParams = getUrlSearchParam(window.location.hash.replace(/^#/, '?'));
+
+var settings = {
+  music: parseInt(params.music || 0),
+  volume: parseFloat(params.volume || 1),
+  musicUrl: params.volume.musicUrl || './bgm.mp3',
+}
+
+var danceConfig = {
+  speed: parseFloat(hashParams.speed || 1),
+}
+
+window.addEventListener("hashchange", function() {
+  var hashParams = getUrlSearchParam(window.location.hash.replace(/^#/, '?'));
+  danceConfig.speed = parseFloat(hashParams.speed || 1);
+}, false);
+
 init();
 animate();
 
+function getUrlSearchParam(search) {
+  search = search || window.location.search;
+  var params = {};
+  var re = /(?:\?|\&)([^\=]*)\=([^\&]*)/g;
+  var mg = re.exec(search);
+  while (mg) {
+    var value = decodeURIComponent(mg[2]),
+      key = mg[1];
+
+    params[key] = value;
+    mg = re.exec(search);
+  }
+  return params;
+}
 
 function init() {
 
@@ -65,10 +91,14 @@ function init() {
     var loader = new THREE.MMDLoader();
     loader.load('./miku_v2.pmd', './wavefile_v2.vmd', function ( object ) {
 
-        //加载完后赠送10秒播放时间
-        dancingTime = 10;
-        audio.play();
-        audio.loop = true;
+        if (settings.music == 1) {
+          audio.src = settings.musicUrl;
+          audio.volume = settings.volume;
+          audio.playbackRate = danceConfig.speed * 1;
+          audio.loop = true;
+          audio.load();
+          audio.play();
+        }
 
         mesh = object;
 
@@ -118,79 +148,15 @@ function animate() {
 
 function render(delta) {
 
-    if( mesh && play ) {
-        /*
-         * 将getDelta的调用放在if判定的外部很重要哦
-         * */
-        //var delta = clock.getDelta();
-        if(dancingTime > 0 || dance) {
-            dancingTime -= delta;
-            THREE.AnimationHandler.update( delta );
-            directionalLight.color.setHex(0xFFEEDD);
-            if(mute){
-                audio.volume = 0;
-            }else{
-                audio.volume = 1;
-                audio.playbackRate = 1;
-            }
-        }else{
-            THREE.AnimationHandler.update( 0.003 );
-            directionalLight.color.setHex(0xFF9999);
+  THREE.AnimationHandler.update( delta * danceConfig.speed);
+  directionalLight.color.setHex(0xFFEEDD);
+  
+  audio.playbackRate = danceConfig.speed * 1;
 
-            if(mute){
-                audio.volume = 0;
-            }else if(music){
-                audio.volume = 1;
-                audio.playbackRate = 1;
-            }else{
-                audio.volume = 0.5;
-                audio.playbackRate = 0.5;
-            }
-        }
-        if( ikSolver ) {
-            ikSolver.update();
-        }
+  if( ikSolver ) {
+      ikSolver.update();
+  }
 
-    }
-    camera.updateProjectionMatrix();
-    renderer.render( scene, camera );
+  camera.updateProjectionMatrix();
+  renderer.render( scene, camera );
 }
-
-
-/*
- * 交互控制模块
- * */
-
-var Control = function(){
-    this.render = renderer;
-    this.camera = camera;
-    this.scene = scene;
-}
-Control.prototype = {
-    addFrame: function(s){
-        var seconds = s ? s : 3;
-        dancingTime = seconds;
-    },
-    play: function(){
-        play = true;
-        audio.play();
-    },
-    pause: function(){
-        play = false;
-        audio.pause();
-    },
-    mute: function(flag) {
-        mute = flag;
-    },
-    music: function(flag){
-        music = flag;
-        audio.volume = 1;
-        audio.playbackRate = 1;
-    },
-    dance: function(flag){
-        dance = flag;
-
-    }
-
-}
-var control = new Control();
