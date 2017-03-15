@@ -58,6 +58,8 @@ function getUrlSearchParam(search) {
 }
 
 function init() {
+  audio.src = settings.musicUrl;
+  audio.load();
 
     container = document.createElement( 'div' );
     document.body.appendChild( container );
@@ -94,11 +96,9 @@ function init() {
     loader.load('./miku_v2.pmd', './wavefile_v2.vmd', function ( object ) {
 
         if (settings.music == 1) {
-          audio.src = settings.musicUrl;
           audio.volume = danceConfig.mute ? 0 : settings.volume;
           audio.playbackRate = danceConfig.speed * 1;
           audio.loop = true;
-          audio.load();
           audio.play();
         }
 
