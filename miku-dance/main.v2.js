@@ -30,11 +30,13 @@ var settings = {
 
 var danceConfig = {
   speed: parseFloat(hashParams.speed || 1),
+  mute: parseFloat(hashParams.speed || 0),
 }
 
 window.addEventListener("hashchange", function() {
   var hashParams = getUrlSearchParam(window.location.hash.replace(/^#/, '?'));
   danceConfig.speed = parseFloat(hashParams.speed || 1);
+  danceConfig.mute = parseFloat(hashParams.mute || 0);
 }, false);
 
 init();
@@ -93,7 +95,7 @@ function init() {
 
         if (settings.music == 1) {
           audio.src = settings.musicUrl;
-          audio.volume = settings.volume;
+          audio.volume = danceConfig.mute ? 0 : settings.volume;
           audio.playbackRate = danceConfig.speed * 1;
           audio.loop = true;
           audio.load();
@@ -152,7 +154,8 @@ function render(delta) {
   directionalLight.color.setHex(0xFFEEDD);
 
   audio.playbackRate = danceConfig.speed * 1;
-console.log(audio.playbackRate)
+  audio.volume = danceConfig.mute ? 0 : settings.volume;
+
   if( ikSolver ) {
       ikSolver.update();
   }
