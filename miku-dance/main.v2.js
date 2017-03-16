@@ -88,7 +88,7 @@ function init() {
       alpha: true,
       antialias: false,
       precision: 'lowp',
-      preserveDrawingBuffer: true,
+      // preserveDrawingBuffer: true,
     });
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( windowWidth, windowHeight );
@@ -129,7 +129,7 @@ function render(delta) {
         //var delta = clock.getDelta();
         if(dancingTime > 0 || dance) {
             dancingTime -= delta;
-            THREE.AnimationHandler.update( delta * .5 );
+            THREE.AnimationHandler.update( delta );
             directionalLight.color.setHex(0xFFEEDD);
             if(mute){
                 audio.volume = 0;
