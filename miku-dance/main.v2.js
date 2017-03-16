@@ -150,9 +150,10 @@ function render(delta) {
             ikSolver.update();
         }
 
+        camera.updateProjectionMatrix();
+        renderer.render( scene, camera );
     }
-    camera.updateProjectionMatrix();
-    renderer.render( scene, camera );
+
 }
 
 
