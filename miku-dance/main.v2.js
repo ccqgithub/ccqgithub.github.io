@@ -129,7 +129,7 @@ function render(delta) {
         //var delta = clock.getDelta();
         if(dancingTime > 0 || dance) {
             dancingTime -= delta;
-            THREE.AnimationHandler.update( delta );
+            THREE.AnimationHandler.update( delta * .5 );
             directionalLight.color.setHex(0xFFEEDD);
             if(mute){
                 audio.volume = 0;
@@ -174,7 +174,7 @@ var Control = function(){
 Control.prototype = {
     addFrame: function(s){
         var seconds = s ? s : 3;
-        dancingTime = seconds;
+        dancingTime += seconds;
     },
     play: function(){
         play = true;
