@@ -84,7 +84,12 @@ function init() {
 
     }, onProgress, onError );
 
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, precision: 'lowp' });
+    renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: false,
+      precision: 'lowp',
+      preserveDrawingBuffer: true,
+    });
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( windowWidth, windowHeight );
     container.appendChild( renderer.domElement );
