@@ -86,8 +86,8 @@ function init() {
 
     renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: false,
-      precision: 'lowp',
+      antialias: true,
+      // precision: 'lowp',
       // preserveDrawingBuffer: true,
     });
     renderer.setPixelRatio( window.devicePixelRatio );
