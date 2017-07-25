@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>3d 本地相册</title>
+
+	<link rel="stylesheet" href="style.css" />
+
+	<script src="jquery-1.11.1.min.js"></script>
+	<script src="tween.min.js"></script>
+	<script src="three.min.js"></script>
+	<script src="CSS3DRenderer.js"></script>
+	<script src="TrackballControls.js"></script>
+</head>
+<body>
+	<div class="box" id="box"></div>
+
+<script>
+	var objects = [];
+  var targets = [];
+	var camera, scene, renderer, object, controls, element;
+
+  init();
+  animate();
+
+	// 第一次初始化
+	function init() {
+		// 相机
+		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
+		camera.position.y = 1000;
+    camera.position.x = 1000;
+    camera.position.z = 1000;
+		scene = new THREE.Scene();
+
+		// css3d 渲染器
+		renderer = new THREE.CSS3DRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.domElement.style.position = 'absolute';
+		document.getElementById( 'box' ).appendChild( renderer.domElement );
+
+		// TrackballControls
+		controls = new THREE.TrackballControls( camera, renderer.domElement );
+		controls.rotateSpeed = 0.5;
+		controls.minDistance = 100;
+		controls.maxDistance = 6000;
+		controls.addEventListener( 'change', render );
+
+		window.addEventListener( 'resize', onWindowResize, false );
+
+		setCube();
+
+    $('.btn-pull').click(function() {
+
+    });
+	}
+
+	// 获取随机过渡类型
+	function randomEasing() {
+		var easingNames = ['Linear', 'Quadratic', 'Cubic', 'Quartic', 'Quintic', 'Sinusoidal', 'Exponential', 'Circular', 'Elastic', 'Back', 'Bounce'];
+		var easingTypes = ['In', 'Out', 'InOut'];
+		var name;
+		var type;
+
+		name = easingNames[Math.max(0, Math.round(Math.random() * 11) - 1)];
+		type = easingTypes[Math.max(0, Math.round(Math.random() * 3) - 1)];
+
+		if (name == 'Linear') {
+			return TWEEN.Easing.Linear.None;
+		}
+
+		if (!TWEEN.Easing[name][type]) {
+			return randomEasing();
+		}
+
+		return TWEEN.Easing[name][type];
+	}
+
+	// 重设场景，渲染器，控制器
+	function clear() {
+		for (var i = 0; i < objects.length; i++) {
+			scene.remove( objects[i] );
+		}
+
+		objects = [];
+		renderer.setClearDom();
+
+		controls.reset();
+		scene.updateMatrixWorld();
+	}
+
+  function setCube() {
+    var elem, object;
+		var vector = new THREE.Vector3();
+
+    clear();
+
+    function addOneSide(options) {
+      // options: {
+      //   x,y,z
+      // }
+
+      elem = document.createElement( 'div' );
+      elem.className = 'element';
+      elem.innerHTML = '<img src="'+ options.img +'" />';
+
+      // elem.addEventListener( 'click', goOne, false );
+
+      object = new THREE.CSS3DObject( elem );
+      object.position.x = 0;
+      object.position.y = 0;
+      object.position.z = 0;
+
+      objects.push( object );
+      scene.add( object );
+
+      object = new THREE.Object3D();
+
+      object.position.x = options.x;
+      object.position.y = options.y;
+      object.position.z = options.z;
+
+      vector.x = object.position.x * 2;
+      vector.y = object.position.y * 2;
+      vector.z = object.position.z * 2;
+
+      object.lookAt( vector );
+  		targets.push( object );
+    }
+
+    // 上
+    addOneSide({
+      x: 0,
+      y: -200,
+      z: 0,
+      img: './img/1.jpg'
+    });
+
+    // 下
+    addOneSide({
+      x: 0,
+      y: 200,
+      z: 0,
+      img: './img/2.jpg'
+    });
+
+    // 左
+    addOneSide({
+      x: -200,
+      y: 0,
+      z: 0,
+      img: './img/3.jpg'
+    });
+
+    // 右
+    addOneSide({
+      x: 200,
+      y: 0,
+      z: 0,
+      img: './img/4.jpg'
+    });
+
+    // 前
+    addOneSide({
+      x: 0,
+      y: 0,
+      z: 200,
+      img: './img/5.jpg'
+    });
+
+    // 后
+    addOneSide({
+      x: 0,
+      y: 0,
+      z: -200,
+      img: './img/6.jpg'
+    });
+
+    transform( targets, 3000 );
+  }
+
+	// 镜头渐变动画
+	function transformCamera(target, duration, easing) {
+		new TWEEN.Tween( camera.position )
+			.to( { x: target.position.x, y: target.position.y, z: target.position.z }, duration )
+			.easing( easing || TWEEN.Easing.Exponential.InOut )
+			.start();
+	}
+
+	// 元素渐变动画
+	function transform( targets, duration, easing ) {
+
+		TWEEN.removeAll();
+
+		for ( var i = 0; i < objects.length; i ++ ) {
+
+			var object = objects[ i ];
+			var target = targets[ i ];
+
+			new TWEEN.Tween( object.position )
+				.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+				.easing( easing || TWEEN.Easing.Exponential.InOut )
+				.start();
+
+			new TWEEN.Tween( object.rotation )
+				.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+				.easing( TWEEN.Easing.Exponential.InOut )
+				.start();
+		}
+
+		new TWEEN.Tween( this )
+			.to( {}, duration * 2 )
+			.onUpdate( render )
+			.start();
+
+	}
+
+	// 窗口resize
+	function onWindowResize() {
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize( window.innerWidth, window.innerHeight );
+
+		render();
+
+	}
+
+	// 渲染
+	function render() {
+    console.log('render')
+		renderer.render( scene, camera );
+	}
+
+	// 开启动画监听
+	function animate() {
+		requestAnimationFrame( animate );
+		TWEEN.update();
+		controls.update();
+	}
+
+  // 显示一张图片
+	// function goOne( index ) {
+	// 	var i = index;
+	// 	var src;
+	// 	var elem;
+	// 	var cameraPosition;
+  //
+	// 	if ( this.getAttribute && this.getAttribute('i') ) {
+	// 		i = this.getAttribute('i');
+	// 	}
+  //
+	// 	clear();
+  //
+	// 	perIndex = parseInt( i );
+	// 	src = groupData[i] + '?' + new Date() * 1;
+  //
+	// 	elem = document.createElement( 'div' );
+	// 	elem.className = 'element-big';
+	// 	elem.innerHTML = '<img src="'+ prefix + src +'" />';
+  //
+	// 	object = new THREE.CSS3DObject( elem );
+	// 	object.position.x = Math.random() * 4000 - 200;
+	// 	object.position.y = Math.random() * 4000 - 200;
+	// 	object.position.z = Math.random() * 4000 - 200;
+	// 	scene.add( object );
+  //
+	// 	objects.push( object );
+  //
+	// 	object = new THREE.Object3D();
+  //
+	// 	targets.table.single = [];
+	// 	object.position.x = 0;
+	// 	object.position.y = 0;
+	// 	object.position.z = 0;
+  //
+	// 	targets.single.push( object );
+  //
+	// 	camera.position.x = Math.random() * 1000 - 200;
+	// 	camera.position.y = Math.random() * 1000 - 200;
+	// 	camera.position.z = Math.random() * 1000 - 200;
+  //
+	// 	transform( targets['single'], 500, randomEasing() );
+	// 	transformCamera({
+	// 		position: {
+	// 			x: 0,
+	// 			y: 0,
+	// 			z: 500
+	// 		}
+	// 	}, 500, randomEasing());
+	// }
+
+</script>
+
+</body>
+</html>
