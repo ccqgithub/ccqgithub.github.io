@@ -4,17 +4,49 @@
 <head>
   <meta charset="UTF-8" />
   <title>ccqgithub.github.io</title>
+
+  <style>
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .main {
+      min-height: calc(100vh - 50px);
+      padding: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .footer {
+      padding: 0 20px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #ddd;
+    }
+  </style>
 </head>
 
 <body>
-  <ul>
-    <li>
-      <a href="./fe-share-01/output/index.html">前端工程化概述</a>
-    </li>
-    <li>
-      <a href="./3d-cube/index.html">3d-cube</a>
-    </li>
-  </ul>
+  <div class="main">
+    <ul>
+      <li>
+        <a href="./fe-share-01/output/index.html">前端工程化概述</a>
+      </li>
+      <li>
+        <a href="./3d-cube/index.html">3d-cube</a>
+      </li>
+    </ul>
+  </div>
+  <footer class="footer">
+    <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备18013137号-1</a>
+  </footer>
 </body>
 
 </html>
